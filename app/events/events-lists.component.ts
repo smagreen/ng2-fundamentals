@@ -109,11 +109,7 @@ events = [{
     time: '9:00 am',
     price: 950.00,
     imageUrl: '/app/assets/images/ng-nl.png',
-    location: {
-        address: 'The NG-NL Convention Center & Scuba Shop',
-        city: 'Amsterdam',
-        country: 'Netherlands'
-    },
+    onlineUrl: 'http://ng-nl.org',
     sessions: [{
         id: 1,
         name: "Testing Angular 4 Workshop",
@@ -167,7 +163,7 @@ events = [{
       id: 3,
       name: ' ng - conf 2037 ',
       date: ' 5 / 4 / 2037 ',
-      time: '9: 00 am ',
+      time: '9:00 am',
       price: 759.00,
       imageUrl: ' / app / assets / images / ng - conf.png ',
       location: {
@@ -256,7 +252,7 @@ events = [{
       id: 4,
       name: 'UN Angular Summit ',
       date: '6 / 10 / 2037 ',
-      time: '8: 00 am ',
+      time: '8:00 am',
       price: 800.00,
       imageUrl: ' / app / assets / images / basic - shield.png ',
       location: {
