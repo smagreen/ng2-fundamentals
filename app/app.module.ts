@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { LOCALE_ID } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -13,7 +14,8 @@ import {
     EventRouteActivator,
     EventListResolver,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    DurationPipe
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component'
@@ -43,9 +45,11 @@ import { appRoutes } from './routes'
                     Error404Component,
                     CreateSessionComponent,
                     SessionListComponent,
-                    CollapsibleWellComponent
+                    CollapsibleWellComponent,
+                    DurationPipe
                 ],
     providers: [
+                    {provide: LOCALE_ID, useValue:"en-gb"},
                     EventService,
                     ToastrService,
                     EventRouteActivator,
