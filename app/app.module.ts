@@ -1,11 +1,11 @@
 import './rxjs-extensions';
-import { NgModule } from '@angular/core'
-import { LOCALE_ID } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from '@angular/router'
-import { HttpModule } from '@angular/http'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { AuthService } from './user/auth.service'
+import { NgModule } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './user/auth.service';
 
 import {
     EventsListComponent,
@@ -18,11 +18,11 @@ import {
     CreateSessionComponent, 
     SessionListComponent,
     DurationPipe
-} from './events/index'
+} from './events/index';
 
-import { EventsAppComponent } from './events-app.component'
+import { EventsAppComponent } from './events-app.component';
 
-import { NavbarComponent } from './nav/navbar.component'
+import { NavbarComponent } from './nav/navbar.component';
 
 import { 
         TOASTR_TOKEN,
@@ -31,15 +31,15 @@ import {
         JQ_TOKEN,
         SimpleModalComponent,
         ModalTriggerDirective
-} from './common/index'
+} from './common/index';
 
-import { Error404Component } from './errors/404.component'
+import { Error404Component } from './errors/404.component';
 
 
-import { appRoutes } from './routes'
+import { appRoutes } from './routes';
 
-declare let toastr: Toastr
-declare let jQuery : Object
+declare let toastr: Toastr;
+declare let jQuery: Object;
 
 @NgModule({
     imports: [
@@ -66,7 +66,7 @@ declare let jQuery : Object
     providers: [
                     {
                         provide: LOCALE_ID,
-                        useValue:"en-gb"
+                        useValue:'en-gb'
                     },
                     EventService,
                     {
@@ -90,8 +90,8 @@ export class AppModule {
 }/**/
 
 function checkDirtyState(component:CreateEventComponent): boolean {
-    if(component.isDirty){
-        return window.confirm('You have not saved, do you really want to cancel?')
+    if(component.isDirty) {
+        return window.confirm('You have not saved, do you really want to cancel?');
     }
     return true;
 }

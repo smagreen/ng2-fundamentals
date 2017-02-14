@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core'
-import { AuthService } from './user/auth.service'
+import { Component, OnInit} from '@angular/core';
+import { AuthService } from './user/auth.service';
 
 
 @Component({
@@ -8,9 +8,9 @@ import { AuthService } from './user/auth.service'
 })
 
 export class EventsAppComponent implements OnInit {
-    constructor(private auth: AuthService ){}
+    constructor(private auth: AuthService ) {}
 
-    ngOnInit(){
-        this.auth.checkAuthenticationStatus()    
+    ngOnInit() {
+        this.auth.checkAuthenticationStatus();    
     }
 }

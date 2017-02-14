@@ -1,38 +1,38 @@
-import { Injectable } from '@angular/core'
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import { Observable } from 'rxjs/Observable'
-import { IUser } from './user.model'
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { IUser } from './user.model';
 
 
 @Injectable()
 export class AuthService {
-    currentUser:IUser
-    constructor (private http: Http){}
+    currentUser: IUser;
+    constructor (private http: Http) { }
 
-    loginUser(userName:string, password:string){
+    loginUser(userName:string, password:string) {
         let headers = new Headers({'Content-type':'application/json'});
-        let options = new RequestOptions({'headers': headers})
+        let options = new RequestOptions({'headers': headers});
 
         let loginInfo = {username: userName, password: password};
 
         return this.http.post('api/login', JSON.stringify(loginInfo), options )
         .do(resp => {
-            if(resp){
+            if(resp) {
                 this.currentUser = <IUser> resp.json().user;
             }
         }).catch(error => {
             return Observable.of(false);
-        })
+        });
     }
 
-    isAuthenticated(){
+    isAuthenticated() {
         return !!this.currentUser;
     }
 
-    checkAuthenticationStatus(){
+    checkAuthenticationStatus() {
         return this.http.get('api/currentidentity')
             .map((response:any) => {
-                if(response._body){
+                if(response._body) {
                     return response.json();
                 } else {
                     return {};
@@ -46,20 +46,20 @@ export class AuthService {
             .subscribe();
     }
 
-    updateCurrentUser(firstName:string, lastname:string): Observable<any>{
-        this.currentUser.firstName = firstName
-        this.currentUser.lastName = lastname
+    updateCurrentUser(firstName:string, lastname:string): Observable<any> {
+        this.currentUser.firstName = firstName;
+        this.currentUser.lastName = lastname;
 
         let headers = new Headers({'Content-type':'application/json'});
-        let options = new RequestOptions({'headers': headers})
+        let options = new RequestOptions({'headers': headers});
         return this.http.put(`/api/users/${this.currentUser.id}`,
              JSON.stringify(this.currentUser), options);
     }
 
-    logoutCurrentUser(){
+    logoutCurrentUser() {
         this.currentUser = undefined;
         let headers = new Headers({'Content-type':'application/json'});
-        let options = new RequestOptions({'headers': headers})
+        let options = new RequestOptions({'headers': headers});
         return this.http.post('/api/logout', JSON.stringify({}), options);    
     }
 } 
