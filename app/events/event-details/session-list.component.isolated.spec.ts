@@ -46,7 +46,7 @@ describe('SessionListComponent', () => {
             expect(component.visibleSessions.length).toBe(3);
             expect(component.visibleSessions[0].name).toBe('X');
             expect(component.visibleSessions[2].name).toBe('Z');
-
+            // END
         })   
     })
 })
