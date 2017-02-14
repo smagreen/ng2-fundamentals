@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { LOCALE_ID } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
+import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AuthService } from './user/auth.service'
 
@@ -11,9 +12,9 @@ import {
     EventThumbnailComponent,
     CreateEventComponent,
     EventService,
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
-    CreateSessionComponent,
+    CreateSessionComponent, 
     SessionListComponent,
     DurationPipe
 } from './events/index'
@@ -44,6 +45,7 @@ declare let jQuery : Object
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpModule,
         RouterModule.forRoot(appRoutes)
     ],
     declarations: [ EventsAppComponent,
@@ -74,11 +76,7 @@ declare let jQuery : Object
                         provide: JQ_TOKEN,
                         useValue: jQuery 
                     },
-                    EventRouteActivator,
-                    {
-                        provide: 'canDeactivateCreateEvent',
-                        useValue: checkDirtyState
-                    },
+                    EventResolver,
                     EventListResolver,
                     AuthService
                 ],
